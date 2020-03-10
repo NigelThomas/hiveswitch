@@ -13,15 +13,16 @@ echo ... installing the SQLstream schema
 echo ... running on host=`hostname`
 sed -i -e "s/%HOSTNAME%/`hostname`/g" setup.sql
 
-echo ... create source
-$SQLSTREAM_HOME/bin/sqllineClient --run=input.sql
+echo ... create script with all the pieces so if it fails it stops and leaves a message at the end of the log
+cat input.sql > /tmp/setup.sql
+
 
 for i in `seq 0 7`
 do
-    echo ... set up shard $i
-    cat setup.sql | sed -e "s/%SCHEMA%/edr_output_$i/" -e "s/%SHARD%/$i/" > /tmp/setup.sql
-    $SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/setup.sql
+    cat setup.sql | sed -e "s/%SCHEMA%/edr_output_$i/" -e "s/%SHARD%/$i/" >> /tmp/setup.sql
 done
+
+$SQLSTREAM_HOME/bin/sqllineClient --run=/tmp/setup.sql
 
 rm /tmp/setup.sql
 
