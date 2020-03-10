@@ -93,6 +93,7 @@ CREATE OR REPLACE STREAM "edr_data_ns"
     "sn-closure-reason" INTEGER,
     "event-label" VARCHAR(16)
 )
+;
 
 CREATE OR REPLACE PUMP "edr_input_pump" STOPPED
 AS
