@@ -89,7 +89,7 @@ OPTIONS (
         "orc.version" 'V_0_11',
 
         "DIRECTORY" '/home/sqlstream/shard_%SHARD%_out',
-        "FILENAME_PREFIX" 'edr-out-%HOSTNAME%',
+        "FILENAME_PREFIX" 'edr-%HOSTNAME%-shard-%SHARD%',
         "FILENAME_SUFFIX" '.orc',
         "FILENAME_DATE_FORMAT" 'yyyy-MM-dd-HH.mm.ss',
         
