@@ -99,7 +99,7 @@ CREATE OR REPLACE PUMP "edr_input_pump" STOPPED
 AS
 INSERT INTO "edr_data_ns"
 SELECT STREAM
-      , char_to_timestamp('MM/dd/yyyy HH:mm:ss:SSS', "sn-end-time") as "event_time"
+        char_to_timestamp('MM/dd/yyyy HH:mm:ss:SSS', "sn-end-time") as "event_time"
       , *
 FROM   "edr_data_fs"
 ;
