@@ -266,6 +266,10 @@ SELECT STREAM
     "sn-volume-amt-ip-bytes-uplink",
     "sn-closure-reason",
     "event-label"
-FROM "edr"."edr_data_fs";
-WHERE "app_id" = %SHARD%
+FROM (
+  SELECT STREAM *
+       , char_to_timestamp('MM/dd/yyyy HH:mm:ss:SSS', "sn-end-time") as "event_time"
+  FROM   "edr"."edr_data_fs"
+  WHERE "app_id" = %SHARD%
+)
 ;
