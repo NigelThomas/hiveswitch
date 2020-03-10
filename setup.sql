@@ -88,13 +88,13 @@ OPTIONS (
         --"orc.batch.size" '10000',
         "orc.version" 'V_0_11',
 
-        "DIRECTORY" '/home/sqlstream/output',
+        "DIRECTORY" '/home/sqlstream/shard_%SHARD%_out',
         "FILENAME_PREFIX" 'edr-out-%HOSTNAME%',
         "FILENAME_SUFFIX" '.orc',
         "FILENAME_DATE_FORMAT" 'yyyy-MM-dd-HH.mm.ss',
         
         
-        "FILE_ROTATION_TIME" '60s',   -- force frequent file rotations
+        "FILE_ROTATION_TIME" '120s',   -- force frequent file rotations
         "ORIGINAL_FILENAME" 'pending-edr.orc',
 
         
