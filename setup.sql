@@ -268,8 +268,7 @@ SELECT STREAM
     "event-label"
 FROM (
   SELECT STREAM *
-       , char_to_timestamp('MM/dd/yyyy HH:mm:ss:SSS', "sn-end-time") as "event_time"
-  FROM   "edr"."edr_data_fs"
+  FROM   "edr"."edr_data_ns"
   WHERE "app_id" = %SHARD%
 )
 ;
