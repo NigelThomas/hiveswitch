@@ -1,20 +1,20 @@
 -- Table to be created in Hive for performance test
 
 !set force on
-CREATE SCHEMA hivepar;
+CREATE SCHEMA hiveswitch;
 !set force off
 
 
-USE hivepar;
+USE hiveswitch;
 
 !set force on
-DROP TABLE hive_edr_hivepar;
+DROP TABLE hive_edr_hiveswitch;
 !set force off
 
 -- we take 21 initial columns, then replicate each one twice (prefix by aa_ and bb_) to make 63; and add 7 partition columns
 
 
-CREATE TABLE hive_edr_hivepar
+CREATE TABLE hive_edr_hiveswitch
 (
     sn_end_time VARCHAR(32),
     sn_start_time VARCHAR(32),
@@ -90,7 +90,7 @@ PARTITIONED BY (
     cell_id INT
 )
 STORED AS ORC
-LOCATION '/data/svc_sqlstream_guavus/hivepar_edr'
+LOCATION '/data/svc_sqlstream_guavus/hiveswitch_edr'
 TBLPROPERTIES
 ( "orc.compress" = "SNAPPY"
 );
